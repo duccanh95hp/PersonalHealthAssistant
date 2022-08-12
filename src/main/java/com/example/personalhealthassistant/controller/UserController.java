@@ -43,6 +43,7 @@ public class UserController {
             u.setName(registerUser.getUsername());
             String password = encoder.encode(registerUser.getPassword());
             u.setPassword(password);
+            u.setEmail(registerUser.getEmail());
 
             Set<RolesEntity> roles = new HashSet<RolesEntity>();
             RolesEntity r = roleService.findByName(Constants.ROLE_USER).get();
@@ -52,6 +53,6 @@ public class UserController {
 
             userService.saveUsers(u);
         }
-        return "/";
+        return "/web/index";
     }
 }
